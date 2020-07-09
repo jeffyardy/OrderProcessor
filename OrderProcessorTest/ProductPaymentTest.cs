@@ -12,18 +12,19 @@ namespace OrderProcessorTest
     {
 
         string outputValue;
+        string expectedResult = "Success";
         [SetUp]
         public void Setup()
         {
-            
+
         }
 
         [Test]
         public void PaymentPositiveTest()
         {
             //Act
-            string PositiveTest = "Success";
-            
+
+
             List<string> paymentReason = new List<string>
             {
                 "PaymentofProduct"//,
@@ -38,7 +39,7 @@ namespace OrderProcessorTest
             outputValue = OrderProcessor.Program.PaymentDetails(paymentReason[0]);
 
             //Assert
-            Assert.AreEqual(outputValue, PositiveTest);
+            Assert.AreEqual(outputValue, expectedResult);
         }
 
 
@@ -46,7 +47,6 @@ namespace OrderProcessorTest
         public void PaymentNegativeTest()
         {
             //Act
-            string NegativeTest = "Not Success";
             List<string> paymentReason = new List<string>
             {
                 "PaymentofProductNewValue"//,
@@ -61,7 +61,7 @@ namespace OrderProcessorTest
             outputValue = OrderProcessor.Program.PaymentDetails(paymentReason[0]);
 
             //Assert
-            Assert.AreEqual(outputValue, NegativeTest);
+            Assert.AreNotEqual(outputValue, expectedResult);
         }
 
     }
